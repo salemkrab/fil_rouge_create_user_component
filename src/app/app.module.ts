@@ -15,6 +15,7 @@ import { PlanningPageComponent } from './components/planning-page/planning-page.
 import { ProfileAdminViewComponent } from './components/profile-admin-view/profile-admin-view.component';
 import { ProfileUserViewComponent } from './components/profile-user-view/profile-user-view.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,1 +1,323 @@
-<p>create-user-page works!</p>
+<div class="component-body d-flex">
+    <div class="container d-flex align-items-center">
+        <div class="row justify-content-center">
+            <div class="col-md-7 col-lg-8 form-container">
+                <h4 class="mb-3 text-center">Créer un compte</h4>
+                <form class="needs-validation" novalidate="" (ngSubmit)="addUser()" [formGroup]="createUserForm">
+                    <div class="row g-3">
+
+                        <div class="col-md-6">
+                            <label for="lastName" class="form-label">Nom</label>
+                            <input type="text" class="form-control" id="lastName" placeholder="Hirsh"
+                                formControlName="lastName" [ngClass]="
+                                        (createUserForm.get('lastName')?.touched ||
+                                        createUserForm.get('lastName')?.dirty) &&
+                                        createUserForm.get('lastName')?.hasError('required')
+                                        ? 'is-invalid'
+                                        : '' || createUserForm.get('lastName')?.hasError('minlength')
+                                        ? 'is-invalid'
+                                        : '' ||
+                                            ((createUserForm.get('lastName')?.touched ||
+                                            createUserForm.get('lastName')?.dirty) &&
+                                            !createUserForm.get('lastName')?.invalid)
+                                        ? 'is-valid'
+                                        : ''
+                                    ">
+                            <div class="valid-feedback">Nom valide!.</div>
+                            <div class="invalid-feedback">
+                                {{
+                                createUserForm.get("lastName")?.hasError("required")
+                                ? " Le nom est obligatoire"
+                                : ""
+                                }}
+                                {{
+                                createUserForm.get("lastName")?.hasError("minlength")
+                                ? " 2 letters au minimum"
+                                : ""
+                                }}
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="firstName" class="form-label">Prénom</label>
+                            <input type="text" class="form-control" id="firstName" placeholder="Martin"
+                                formControlName="firstName" [ngClass]="
+                                        (createUserForm.get('firstName')?.touched ||
+                                        createUserForm.get('firstName')?.dirty) &&
+                                        createUserForm.get('firstName')?.hasError('required')
+                                        ? 'is-invalid'
+                                        : '' || createUserForm.get('firstName')?.hasError('minlength')
+                                        ? 'is-invalid'
+                                        : '' ||
+                                            ((createUserForm.get('firstName')?.touched ||
+                                            createUserForm.get('firstName')?.dirty) &&
+                                            !createUserForm.get('firstName')?.invalid)
+                                        ? 'is-valid'
+                                        : ''
+                                    ">
+                            <div class="valid-feedback">Prénom valide!.</div>
+                            <div class="invalid-feedback">
+                                {{
+                                createUserForm.get("firstName")?.hasError("required")
+                                ? " Le prénom est obligatoire"
+                                : ""
+                                }}
+                                {{
+                                createUserForm.get("firstName")?.hasError("minlength")
+                                ? " 2 letters au minimum"
+                                : ""
+                                }}
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="email" class="form-label">Email <span
+                                    class="text-muted">(professionnelle)</span></label>
+                            <input type="email" class="form-control" id="email"
+                                placeholder="e.g martin.hirsh@capgemini.com" formControlName="email" [ngClass]="
+                                        (createUserForm.get('email')?.touched ||
+                                        createUserForm.get('email')?.dirty) &&
+                                        createUserForm.get('email')?.hasError('required')
+                                        ? 'is-invalid'
+                                        : '' || createUserForm.get('email')?.hasError('email')
+                                        ? 'is-invalid'
+                                        : '' ||
+                                            ((createUserForm.get('email')?.touched ||
+                                            createUserForm.get('email')?.dirty) &&
+                                            !createUserForm.get('email')?.invalid)
+                                        ? 'is-valid'
+                                        : ''
+                                    ">
+                            <div class="valid-feedback">Email valide!</div>
+                            <div class="invalid-feedback">
+                                {{
+                                createUserForm.get("email")?.hasError("required")
+                                ? " L'émail est obligatoire"
+                                : ""
+                                }}
+                                {{
+                                createUserForm.get("email")?.hasError("email")
+                                ? " Email incorrect"
+                                : ""
+                                }}
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="employeeNumber" class="form-label">Matricule</label>
+                            <input type="text" class="form-control" id="employeeNumber" placeholder="e.g 123456789"
+                                formControlName="employeeNumber" [ngClass]="
+                                        (createUserForm.get('employeeNumber')?.touched ||
+                                        createUserForm.get('employeeNumber')?.dirty) &&
+                                        createUserForm.get('employeeNumber')?.hasError('required')
+                                        ? 'is-invalid'
+                                        : '' || createUserForm.get('employeeNumber')?.hasError('pattern')
+                                        ? 'is-invalid'
+                                        : '' ||
+                                            ((createUserForm.get('employeeNumber')?.touched ||
+                                            createUserForm.get('employeeNumber')?.dirty) &&
+                                            !createUserForm.get('employeeNumber')?.invalid)
+                                        ? 'is-valid'
+                                        : ''
+                                    ">
+                            <div class="valid-feedback">Matricule valide!</div>
+                            <div class="invalid-feedback">
+                                {{
+                                createUserForm.get("employeeNumber")?.hasError("required")
+                                ? " Le matricule est obligatoire"
+                                : ""
+                                }}
+                                {{
+                                createUserForm.get("employeeNumber")?.hasError("pattern")
+                                ? " Matricule incorrect : saisir un nombre composé de 8 chiffres (0-9)."
+                                : ""
+                                }}
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="address" class="form-label">Addresse postale</label>
+                            <input type="text" class="form-control" id="address"
+                                placeholder="e.g 12 boulévard Lenine 75000 Paris" formControlName="address" [ngClass]="
+                                        (createUserForm.get('address')?.touched ||
+                                        createUserForm.get('address')?.dirty) &&
+                                        createUserForm.get('address')?.hasError('required')
+                                        ? 'is-invalid'
+                                        : '' ||
+                                            ((createUserForm.get('address')?.touched ||
+                                            createUserForm.get('address')?.dirty) &&
+                                            !createUserForm.get('address')?.invalid)
+                                        ? 'is-valid'
+                                        : ''
+                                    ">
+                            <div class="valid-feedback">Adresse valide!</div>
+                            <div class="invalid-feedback">
+                                {{
+                                createUserForm.get("address")?.hasError("required")
+                                ? " L'adresse est obligatoire"
+                                : ""
+                                }}
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="birthDate" class="form-label">Date de naissance</label>
+                            <input type="date" class="form-control" id="birthDate" name="birthDate"
+                                [min]="birthDateMin | date:'yyyy-MM-dd'" [max]="birthDateMax | date:'yyyy-MM-dd'"
+                                formControlName="birthDate" [ngClass]="
+                                        (createUserForm.get('birthDate')?.touched ||
+                                        createUserForm.get('birthDate')?.dirty) &&
+                                        createUserForm.get('birthDate')?.hasError('required')
+                                        ? 'is-invalid'
+                                        : '' || createUserForm.get('birthDate')?.hasError('tooOld')
+                                        ? 'is-invalid'
+                                        : '' || createUserForm.get('birthDate')?.hasError('tooYoung')
+                                        ? 'is-invalid'
+                                        : '' ||
+                                            ((createUserForm.get('birthDate')?.touched ||
+                                            createUserForm.get('birthDate')?.dirty) &&
+                                            !createUserForm.get('birthDate')?.invalid)
+                                        ? 'is-valid'
+                                        : ''
+                                    ">
+                            <div class="valid-feedback">Date de naissance valide!</div>
+                            <div class="invalid-feedback">
+                                {{
+                                createUserForm.get("birthDate")?.hasError("required")
+                                ? " La date de naissance est obligatoire"
+                                : ""
+                                }}
+                                {{
+                                createUserForm.get("birthDate")?.hasError("tooOld")
+                                ? " La date saisie est trop ancienne"
+                                : ""
+                                }}
+                                {{
+                                createUserForm.get("birthDate")?.hasError("tooYoung")
+                                ? " La date saisie est trop récente"
+                                : ""
+                                }}
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="phoneNumber" class="form-label">Téléphone</label>
+                            <input type="text" class="form-control" id="phoneNumber" placeholder="e.g 0123456789"
+                                formControlName="phoneNumber" [ngClass]="
+                                        (createUserForm.get('phoneNumber')?.touched ||
+                                        createUserForm.get('phoneNumber')?.dirty) &&
+                                        createUserForm.get('phoneNumber')?.hasError('required')
+                                        ? 'is-invalid'
+                                        : '' || createUserForm.get('phoneNumber')?.hasError('pattern')
+                                        ? 'is-invalid'
+                                        : '' ||
+                                            ((createUserForm.get('phoneNumber')?.touched ||
+                                            createUserForm.get('phoneNumber')?.dirty) &&
+                                            !createUserForm.get('phoneNumber')?.invalid)
+                                        ? 'is-valid'
+                                        : ''
+                                    ">
+                            <div class="valid-feedback">Numéro de téléphone valide!.</div>
+                            <div class="invalid-feedback">
+                                {{
+                                createUserForm.get("phoneNumber")?.hasError("required")
+                                ? " Le numéro de téléphone est obligatoire"
+                                : ""
+                                }}
+                                {{
+                                createUserForm.get("phoneNumber")?.hasError("pattern")
+                                ? "Saisir un numéro commencant par 0 suivi d'un chiffre 1,2,3,4,5,6,7,8 ou 9 suivis de 8 chiffres quelconques. "
+                                : ""
+                                }}
+                            </div>
+
+                        </div>
+                        <div class="col-md-6">
+                            <label for="employeeFunction" class="form-label">Rôle</label>
+                            <select class="form-select" id="employeeFunction" aria-label="Default select example"
+                                formControlName="employeeFunction" [ngClass]="
+                                        (createUserForm.get('employeeFunction')?.touched ||
+                                        createUserForm.get('employeeFunction')?.dirty) &&
+                                        createUserForm.get('employeeFunction')?.hasError('required')
+                                        ? 'is-invalid'
+                                        : '' || createUserForm.get('employeeFunction')?.hasError('notSelected')
+                                        ? 'is-invalid'
+                                        : '' ||
+                                            ((createUserForm.get('employeeFunction')?.touched ||
+                                            createUserForm.get('employeeFunction')?.dirty) &&
+                                            !createUserForm.get('employeeFunction')?.invalid)
+                                        ? 'is-valid'
+                                        : ''
+                                    ">
+                                <option value="dafaultSelect">Sélectionner un rôle</option>
+                                <option value="administrateur">Administrateur</option>
+                                <option value="collaborateur">Collaborateur</option>
+                                <option value="manager">Manager</option>
+                            </select>
+                            <div class="valid-feedback">Choix valide!.</div>
+                            <div class="invalid-feedback">
+                                {{
+                                createUserForm.get("employeeFunction")?.hasError("required")
+                                ? " Le prénom est obligatoire"
+                                : ""
+                                }}
+                                {{
+                                createUserForm.get("employeeFunction")?.hasError("notSelected")
+                                ? " Veuillez sélectionner un choix valide"
+                                : ""
+                                }}
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="firstPassword" class="form-label">Mot de passe</label>
+                            <input type="firstPassword" id="firstPassword" class="form-control" formControlName="firstPassword"
+                                [ngClass]="
+                                        (createUserForm.get('firstPassword')?.touched ||
+                                        createUserForm.get('firstPassword')?.dirty) &&
+                                        createUserForm.get('firstPassword')?.hasError('required')
+                                        ? 'is-invalid'
+                                        : '' || createUserForm.get('firstPassword')?.hasError('pattern')
+                                        ? 'is-invalid'
+                                        : '' ||
+                                            ((createUserForm.get('firstPassword')?.touched ||
+                                            createUserForm.get('firstPassword')?.dirty) &&
+                                            !createUserForm.get('firstPassword')?.invalid)
+                                        ? 'is-valid'
+                                        : ''
+                                    ">
+                            <div class="valid-feedback">Mot de passe valide!.</div>
+                            <div class="invalid-feedback">
+                                {{
+                                createUserForm.get("firstPassword")?.hasError("required")
+                                ? " Le mot de passe est obligatoire"
+                                : ""
+                                }}
+                                {{
+                                createUserForm.get("firstPassword")?.hasError("pattern")
+                                ? "Saisir entre 8 et 20 caractères quelconques."
+                                : ""
+                                }}
+                            </div>
+                        </div>
+
+                        <hr class="my-4">
+                        <div class="input-group mt-0">
+                            <div class="form-check mx-2">
+                                <label for="canShare" class="form-label">Autorisation de partage de calendrier.</label>
+                                <input class="form-check-input" type="checkbox" id="canShare"
+                                    formControlName="canShare">
+                            </div>
+                        </div>
+                        <div class="input-group mt-1">
+                            <div class="form-check mx-2">
+                                <label for="canModify" class="form-label">Autorisation de modification de
+                                    calendrier.</label>
+                                <input class="form-check-input" type="checkbox" id="canModify"
+                                    formControlName="canModify">
+                            </div>
+                        </div>
+
+                    </div>
+                    <button class="w-50 btn btn-primary btn-lg mx-auto d-block" type="submit"
+                        [disabled]="createUserForm.invalid">Créer</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
